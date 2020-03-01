@@ -5,15 +5,17 @@ import {Repository} from '../../../common/models/Repository';
 import {API_GIT_REPOSITORY_ENDING, API_GIT_USER_URL} from '../user-repos.config';
 import {map} from 'rxjs/operators';
 import {Branch} from '../../../common/models/Branch';
+import {CacheRetriever} from '../../../common/abstracts/cache-retriever.abstract';
 
 @Injectable()
-export class UserReposRetrieverService {
+export class UserReposRetrieverService extends CacheRetriever<null, Repository[] | Branch[]> {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(protected httpClient: HttpClient) {
+    super(httpClient);
+  }
 
   getRepos(username: string): Observable<Repository[]> {
-    return this.httpClient
-      .get(API_GIT_USER_URL + username + API_GIT_REPOSITORY_ENDING)
+    return this.doRequest(API_GIT_USER_URL + username + API_GIT_REPOSITORY_ENDING)
       .pipe(
         map( (res: Repository[]) => {
           return res.map(repoItem => {
@@ -30,8 +32,7 @@ export class UserReposRetrieverService {
   }
 
   getBranches(branchesURL: string): Observable<Branch[]> {
-    return this.httpClient
-      .get(branchesURL)
+    return this.doRequest(branchesURL)
       .pipe( map( (res: Branch[]) => {
         return res.map(repoBranch => {
           return {
