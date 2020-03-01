@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UserReposRetrieverService} from './services/user-repos-retriever/user-repos-retriever.service';
+import {Repository} from '../common/models/Repository';
 
 @Component({
   selector: 'app-user-repos',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserReposContainer implements OnInit {
 
-  constructor() { }
+  constructor(private userReposRetriever: UserReposRetrieverService) { }
 
   ngOnInit() {
+    this.userReposRetriever.getRepos('mattyeo').subscribe(res => {
+      console.log(res as Repository[]);
+    });
   }
 
 }
