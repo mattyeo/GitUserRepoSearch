@@ -1,23 +1,25 @@
 <div>
   <div class="user-repos-search-result-item__repo">
     <div class="user-repos-search-result-item__repoInfo">
-      {{repo.name}}
-      {{repo.owner.login}}
+      <b>Repository Name:</b> <br> {{repo.name}} <br>
+      <b>Repository Owner:</b> <br> {{repo.owner.login}}
     </div>
-    <img src="/assets/img/arrow.svg"
-         alt="arrow"
-         (click)="onArrowClick()"
-         class="user-repos-search-result-item__repoArrow"
-         [class.user-repos-search-result-item__repoArrow--down]="showBranches"
-    >
+    <div class="user-repos-search-result-item__repoArrowWrapper">
+      <img src="/assets/img/arrow.svg"
+           alt="arrow"
+           (click)="onArrowClick()"
+           class="user-repos-search-result-item__repoArrow"
+           [class.user-repos-search-result-item__repoArrow--down]="showBranches"
+      >
+    </div>
   </div>
   <div>
     <ng-container *ngIf="!!branches && showBranches">
       <div class="user-repos-search-result-item__branches">
         <div *ngFor="let branch of branches" class="user-repos-search-result-item__branch">
           <div>
-            <b>Branch:</b> <i>{{branch.name}}</i>  <br>
-            <b>SHA:</b> <small>{{branch.commit.sha}}</small>
+            <b>Branch: </b> <small>{{branch.name}}</small>  <br>
+            <b>SHA: </b> <small>{{branch.commit.sha}}</small>
           </div>
         </div>
       </div>

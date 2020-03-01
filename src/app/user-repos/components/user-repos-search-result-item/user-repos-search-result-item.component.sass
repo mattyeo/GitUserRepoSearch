@@ -1,9 +1,10 @@
 @import "src/assets/styles/variables"
 
 \:host
-  margin-bottom: 5px
+  display: block
+  margin: 0 0 10px
 
-$repo-item-padding:  5px 10px
+$repo-item-padding:  5px 20px
 
 .user-repos-search-result-item
   &__repo
@@ -16,11 +17,19 @@ $repo-item-padding:  5px 10px
       padding: $repo-item-padding
     &Arrow
       display: block
-      height: 30px
+      height: 20px
       width: auto
       transform: rotate(180deg)
       cursor: pointer
-      padding: $repo-item-padding
+      &Wrapper
+        border-radius: 100%
+        width: 30px
+        height: 30px
+        background: $blue
+        display: flex
+        align-items: center
+        justify-content: center
+        margin-right: 20px
     &Arrow--down
       transform: rotate(-90deg)
   &__branches
@@ -32,6 +41,6 @@ $repo-item-padding:  5px 10px
     word-break: break-all
     padding: 5px
     border-bottom: 1px solid $grey-lighter
-    small
-      font-size: 0.75rem
 
+b
+  color: $blue
