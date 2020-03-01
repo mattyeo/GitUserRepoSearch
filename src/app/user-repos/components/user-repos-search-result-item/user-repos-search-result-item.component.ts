@@ -11,14 +11,24 @@ import {Branch} from '../../../common/models/Branch';
 export class UserReposSearchResultItemComponent implements OnInit {
   @Input() repo: Repository;
   branches: Branch[];
+  showBranches = false;
   constructor(private userReposRetriever: UserReposRetrieverService) { }
 
   ngOnInit() {
+  }
+
+  onArrowClick() {
+    this.loadRepoBranches();
+    this.toggleShowBranches();
   }
 
   loadRepoBranches() {
     this.userReposRetriever.getBranches(this.repo.branches_url).subscribe(
       res => this.branches = res
     );
+  }
+
+  toggleShowBranches() {
+    this.showBranches = !this.showBranches;
   }
 }
