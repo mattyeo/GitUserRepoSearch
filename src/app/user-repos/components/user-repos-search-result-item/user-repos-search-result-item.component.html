@@ -1,1 +1,16 @@
-<p>user-repos-search-result-item works!</p>
+<div>
+{{repo.name}}
+{{repo.owner.login}}
+<button (click)="loadRepoBranches()">CLICK TO LOAD BRANCH</button>
+<div>
+  <ng-container *ngIf="!!branches">
+    <ng-container *ngFor="let branch of branches">
+      <div>
+        {{branch.name}}
+        {{branch.commit.url}}
+        {{branch.commit.sha}}
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
+</div>

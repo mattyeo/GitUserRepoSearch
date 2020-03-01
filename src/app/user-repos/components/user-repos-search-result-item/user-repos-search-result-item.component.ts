@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Repository} from '../../../common/models/Repository';
+import {UserReposRetrieverService} from '../../services/user-repos-retriever/user-repos-retriever.service';
+import {Branch} from '../../../common/models/Branch';
 
 @Component({
   selector: 'app-user-repos-search-result-item',
@@ -6,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-repos-search-result-item.component.sass']
 })
 export class UserReposSearchResultItemComponent implements OnInit {
-
-  constructor() { }
+  @Input() repo: Repository;
+  branches: Branch[];
+  constructor(private userReposRetriever: UserReposRetrieverService) { }
 
   ngOnInit() {
   }
 
+  loadRepoBranches() {
+    this.userReposRetriever.getBranches(this.repo.branches_url).subscribe(
+      res => this.branches = res
+    );
+  }
 }

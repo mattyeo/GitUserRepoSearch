@@ -14,12 +14,16 @@ export class UserReposRetrieverService {
   getRepos(username: string): Observable<Repository[]> {
     return this.httpClient
       .get(API_GIT_USER_URL + username + API_GIT_REPOSITORY_ENDING)
-      .pipe( map( (res: Repository[]) => {
+      .pipe(
+        map( (res: Repository[]) => {
           return res.map(repoItem => {
             return {
               name: repoItem.name,
+              owner: {
+                login: repoItem.owner.login
+              },
               fork: repoItem.fork,
-              branches_url: repoItem.branches_url
+              branches_url: this.cleanBranchURL(repoItem.branches_url)
             };
           });
       }));
@@ -39,5 +43,9 @@ export class UserReposRetrieverService {
           };
         });
       }));
+  }
+
+  cleanBranchURL(url: string): string {
+    return url.replace('{/branch}', '');
   }
 }
