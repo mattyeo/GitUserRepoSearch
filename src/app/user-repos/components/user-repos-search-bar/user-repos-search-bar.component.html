@@ -1,5 +1,5 @@
 <form [formGroup]="formGroup" (ngSubmit)="onSearch()">
-  <input type="text" formControlName="username">
-  <span *ngIf="formGroup.controls.username.invalid && formGroup.controls.username.dirty">The Field is not valid</span>
+  <input (focus)="toggleUsernameFocused()" (blur)="toggleUsernameFocused()" type="text" formControlName="username">
+  <span *ngIf="formGroup.controls.username.invalid && formGroup.controls.username.dirty && !usernameFocused">The Field is not valid</span>
   <button type="submit" [disabled]="formGroup.invalid">Search</button>
 </form>

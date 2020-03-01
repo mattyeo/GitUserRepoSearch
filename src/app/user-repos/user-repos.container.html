@@ -1,2 +1,6 @@
+<img src="/assets/img/logo.png" alt="" class="user-repos__logo">
 <app-user-repos-search-bar (searchEvent)="searchRepos($event)" ></app-user-repos-search-bar>
-<app-user-repos-search-result-list [repos]="repos | async"></app-user-repos-search-result-list>
+
+<div class="user-repos__resultList">
+  <app-user-repos-search-result-list [repos]="repos | async"></app-user-repos-search-result-list>
+</div>
