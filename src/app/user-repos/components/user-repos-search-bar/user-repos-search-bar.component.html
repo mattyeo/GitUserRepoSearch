@@ -1,4 +1,5 @@
 <form [formGroup]="formGroup" (ngSubmit)="onSearch()">
   <input type="text" formControlName="username">
-  <button type="submit">Search</button>
+  <span *ngIf="formGroup.controls.username.invalid && formGroup.controls.username.dirty">The Field is not valid</span>
+  <button type="submit" [disabled]="formGroup.invalid">Search</button>
 </form>

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-user-repos-search-bar',
@@ -13,7 +13,7 @@ export class UserReposSearchBarComponent implements OnInit {
 
   ngOnInit() {
     this.formGroup = this.fb.group({
-      username: ''
+      username: ['', Validators.required]
     });
   }
 
