@@ -19,6 +19,9 @@ export class UserReposRetrieverService {
           return res.map(repoItem => {
             return {
               name: repoItem.name,
+              owner: {
+                login: repoItem.owner.login
+              },
               fork: repoItem.fork,
               branches_url: this.cleanBranchURL(repoItem.branches_url)
             };

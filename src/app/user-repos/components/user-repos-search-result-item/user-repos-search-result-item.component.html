@@ -1,9 +1,16 @@
+<div>
 {{repo.name}}
-<button (click)="loadRepoBranches()">CLICK TO LOAD BRANCH</button>\
-<ng-container *ngIf="!!branches">
-  <ng-container *ngFor="let branch of branches">
-    {{branch.name}}
-    {{branch.commit.url}}
-    {{branch.commit.sha}}
+{{repo.owner.login}}
+<button (click)="loadRepoBranches()">CLICK TO LOAD BRANCH</button>
+<div>
+  <ng-container *ngIf="!!branches">
+    <ng-container *ngFor="let branch of branches">
+      <div>
+        {{branch.name}}
+        {{branch.commit.url}}
+        {{branch.commit.sha}}
+      </div>
+    </ng-container>
   </ng-container>
-</ng-container>
+</div>
+</div>
