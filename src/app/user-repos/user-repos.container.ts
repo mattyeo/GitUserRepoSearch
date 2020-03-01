@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserReposRetrieverService} from './services/user-repos-retriever/user-repos-retriever.service';
 import {Repository} from '../common/models/Repository';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-user-repos',
@@ -8,13 +9,14 @@ import {Repository} from '../common/models/Repository';
   styleUrls: ['./user-repos.container.sass']
 })
 export class UserReposContainer implements OnInit {
-
-  constructor(private userReposRetriever: UserReposRetrieverService) { }
+  repos: Observable<Repository[]>;
+  constructor( public userReposRetriever: UserReposRetrieverService) { }
 
   ngOnInit() {
-    this.userReposRetriever.getRepos('mattyeo').subscribe(res => {
-      console.log(res as Repository[]);
-    });
+  }
+
+  searchRepos(username: string): void {
+    this.repos = this.userReposRetriever.getRepos(username);
   }
 
 }

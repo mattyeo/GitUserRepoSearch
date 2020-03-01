@@ -1,2 +1,4 @@
-<input type="text">
-<button>Search</button>
+<form [formGroup]="formGroup" (ngSubmit)="onSearch()">
+  <input type="text" formControlName="username">
+  <button type="submit">Search</button>
+</form>
