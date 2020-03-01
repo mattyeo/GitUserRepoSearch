@@ -1,12 +1,16 @@
 @import "src/assets/styles/variables"
 \:host
+  display: block
+  margin: 0 auto
+
+form
   display: flex
   justify-content: center
+  align-items: center
 
 input[type="text"]
   border-radius: $border-radius
   outline: none
-  border: none
   height: $input-height
   font-size: $input-form-size
   text-align: center
@@ -33,3 +37,14 @@ button
   font-weight: bold
   @media (min-width: $desktop)
     width: 115px
+
+.user-repos-search-bar
+  &__formError
+    text-align: center
+    color: #f64f64
+    font-size: 0.75rem
+    font-weight: bold
+  &__input
+    border: none
+  &__inputError
+    border: 1px solid #f64f64

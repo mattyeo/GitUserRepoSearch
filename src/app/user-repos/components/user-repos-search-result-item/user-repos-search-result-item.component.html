@@ -1,4 +1,4 @@
-<div>
+<ng-container *ngIf="!repo.fork">
   <div class="user-repos-search-result-item__repo">
     <div class="user-repos-search-result-item__repoInfo">
       <b>Repository Name:</b> <br> {{repo.name}} <br>
@@ -25,4 +25,4 @@
       </div>
     </ng-container>
   </div>
-</div>
+</ng-container>
