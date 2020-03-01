@@ -26,4 +26,8 @@ export class UserReposSearchBarComponent implements OnInit {
     this.usernameFocused = !this.usernameFocused;
   }
 
+  get displayUsernameValidationError(): boolean {
+    return this.formGroup.controls.username.invalid && this.formGroup.controls.username.dirty && !this.usernameFocused;
+  }
+
 }
