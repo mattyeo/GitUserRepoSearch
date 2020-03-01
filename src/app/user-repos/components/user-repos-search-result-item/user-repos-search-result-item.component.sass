@@ -1,0 +1,46 @@
+@import "src/assets/styles/variables"
+
+\:host
+  display: block
+  margin: 0 0 10px
+
+$repo-item-padding:  5px 20px
+
+.user-repos-search-result-item
+  &__repo
+    display: flex
+    justify-content: space-between
+    background: $grey-lighter
+    align-items: center
+    border-radius: $border-radius
+    &Info
+      padding: $repo-item-padding
+    &Arrow
+      display: block
+      height: 20px
+      width: auto
+      transform: rotate(180deg)
+      cursor: pointer
+      &Wrapper
+        border-radius: 100%
+        width: 30px
+        height: 30px
+        background: $blue
+        display: flex
+        align-items: center
+        justify-content: center
+        margin-right: 20px
+    &Arrow--down
+      transform: rotate(-90deg)
+  &__branches
+    background: $grey-light
+    border-radius: 0 0 $border-radius $border-radius
+    padding: 0 5px 20px
+    margin: -3px 10px 0
+  &__branch
+    word-break: break-all
+    padding: 5px
+    border-bottom: 1px solid $grey-lighter
+
+b
+  color: $blue

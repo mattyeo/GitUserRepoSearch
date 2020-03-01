@@ -9,6 +9,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class UserReposSearchBarComponent implements OnInit {
   @Output() searchEvent: EventEmitter<string> = new EventEmitter<string>();
   formGroup: FormGroup;
+  private usernameFocused = false;
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -19,6 +20,10 @@ export class UserReposSearchBarComponent implements OnInit {
 
   onSearch() {
     this.searchEvent.emit(this.formGroup.controls.username.value);
+  }
+
+  toggleUsernameFocused() {
+    this.usernameFocused = !this.usernameFocused;
   }
 
 }
